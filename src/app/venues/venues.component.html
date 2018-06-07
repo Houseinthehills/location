@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="">GetVenueAddress</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="">Search Venue<span class="sr-only">(current)</span></a>
+        </li>
+        
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" [(ngModel)]="search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="getVenue()">Search</button>
+      </form>
+    </div>
+  </nav>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 block-nav">
+          <div class="alert alert-light" role="alert">
+              List of venues: {{ search }}
+            </div>
+      </div>
+    </div>
+  <div class="row">
+      <div class="col-sm-3" *ngFor = "let venue of venues">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Venue Name: {{ venue.name }}</h5>
+            <h6>Location</h6>
+            <hr>
+            <p class="card-text">
+              {{ venue.location.formattedAddress }}
+             </p>
+             <hr>
+             <form class="form-inline my-2 my-lg-0">
+                <button type="button" id="{{ venue.id }}"  data=""  class="btn btn-primary" (click)="getImage(venue.id)">View Venue image</button>
+             </form> 
+                <img src="" class="card-img-top" width="100%">
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
